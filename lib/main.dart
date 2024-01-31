@@ -40,13 +40,13 @@ class MyApp extends StatelessWidget {
               primary: Color(0xFFF5F5F5),
               onPrimary: Color(0xFF191919),
               secondary: Color(0xFF6886FF),
-              onSecondary: Color(0xFFFFFFFF),
+              onSecondary: Color(0xFF000000),
               background: Color(0xFFF5F5F5),
               onBackground: Color(0xFF191919),
               error: Color(0xFFF94C4C),
               onError: Color(0xFFFFFFFF),
               surface: Color(0xFFB0C9FF),
-              onSurface: Color(0xFFFFFFFF),
+              onSurface: Color(0xFF000000),
             ),
             useMaterial3: true,
           ),
@@ -137,8 +137,9 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const BlPageLogin()));
               },
-              child: const Text('Login'),
-            )
+              child: const Text('Login', style: TextStyle(color: Color(0xFF000000))),
+            ),
+
           ],
         ),
       ),
