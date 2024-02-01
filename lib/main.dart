@@ -1,4 +1,6 @@
 import 'package:bilian_xy/pages/login.dart';
+import 'package:bilian_xy/pages/major.dart';
+import 'package:bilian_xy/pages/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,11 +39,11 @@ class MyApp extends StatelessWidget {
             // tested with just a hot reload.
             colorScheme: const ColorScheme(
               brightness: Brightness.light,
-              primary: Color(0xFFF5F5F5),
+              primary: Color(0xFFFFFFFF),
               onPrimary: Color(0xFF191919),
               secondary: Color(0xFF6886FF),
               onSecondary: Color(0xFF000000),
-              background: Color(0xFFF5F5F5),
+              background: Color(0xFFFFFFFF),
               onBackground: Color(0xFF191919),
               error: Color(0xFFF94C4C),
               onError: Color(0xFFFFFFFF),
@@ -139,7 +141,18 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Login', style: TextStyle(color: Color(0xFF000000))),
             ),
-
+            TextButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const BlPageMajor()));
+              },
+              child: const Text('Major', style: TextStyle(color: Color(0xFF000000))),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const BlPageSetting()));
+              },
+              child: const Text('Setting', style: TextStyle(color: Color(0xFF000000))),
+            ),
           ],
         ),
       ),

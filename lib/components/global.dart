@@ -25,10 +25,12 @@ class BlHorizontalLine extends StatelessWidget {
 class BlMajorButton extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;
+  final Color backgroundColor;
   const BlMajorButton({
     super.key,
     required this.text,
-    required this.onPressed
+    required this.onPressed,
+    this.backgroundColor = const Color(0xFF6886FF)
   });
 
   @override
@@ -39,7 +41,7 @@ class BlMajorButton extends StatelessWidget {
       child: TextButton(
         onPressed: onPressed,
         style: TextButton.styleFrom(
-          backgroundColor: const Color(0xFF6886FF),
+          backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.r),
           ),

@@ -1,59 +1,95 @@
+
+import 'package:bilian_xy/pages/setting.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
-  runApp(MyApp());
-}
+import '../pages/major.dart';
 
-class MyApp extends StatelessWidget {
+class BlBarSwitch extends StatelessWidget {
+  final bool switchDisplay; // true::dialogs | false::discover
+  final ValueChanged<bool> onSwitch;
+
+  const BlBarSwitch({
+    Key? key,
+    required this.switchDisplay,
+    required this.onSwitch
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TextButton(
-                onPressed: () {
-                  // 左侧按钮被点击时执行的操作
-                  print('左侧按钮被点击了！');
-                },
-                child: Text(
-                  '按钮1',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+    final TextStyle enabledStyle = TextStyle(fontSize: 16.sp, color: const Color(0xFF333333));
+    final TextStyle disabledStyle = TextStyle(fontSize: 16.sp, color: const Color(0xFF8D8D93));
+    return Row(
+      children: [
+        // SizedBox(width: 50.w),
+        // Container(width: 50.w, color: const Color(0xFF000000)),
+        Expanded(
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                BlButtonBarSwitch(
+                  text: "对话",
+                  onPressed: () {
+                    onSwitch(true);
+                  },
+                  style: switchDisplay ? enabledStyle : disabledStyle,
                 ),
-              ),
-              SizedBox(width: 10.0),
-              TextButton(
-                onPressed: () {
-                  // 右侧按钮被点击时执行的操作
-                  print('右侧按钮被点击了！');
-                },
-                child: Text(
-                  '按钮2',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+                BlButtonBarSwitch(
+                  text: "发现",
+                  onPressed: () {
+                    onSwitch(false);
+                  },
+                  style: switchDisplay ? disabledStyle : enabledStyle,
                 ),
-              ),
-            ],
-          ),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.settings),
-              onPressed: () {
-                // 图标按钮被点击时执行的操作
-                print('图标按钮被点击了！');
-              },
+              ],
             ),
-          ],
+          ),
         ),
-        body: Center(
-          child: Text('自定义AppBar示例'),
-        ),
-      ),
+        SizedBox(
+          width: 50.w,
+          height: 50.h,
+          child: IconButton(
+            icon: Image.asset("asset/logo_user.png", height: 21.h),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const BlPageSetting()));
+            },
+          ),
+        )
+      ],
     );
+  }
+}
+
+class BlButtonBarSwitch extends StatelessWidget {
+  const BlButtonBarSwitch({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    required this.style
+  });
+
+  final String text;
+  final VoidCallback onPressed;
+  final TextStyle style;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      onPressed: onPressed,
+      child: Text(text, style: style),
+    );
+  }
+}
+
+class BlBarText extends StatelessWidget {
+  const BlBarText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
