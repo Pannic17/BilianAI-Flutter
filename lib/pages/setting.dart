@@ -1,4 +1,5 @@
 import 'package:bilian_xy/components/global.dart';
+import 'package:bilian_xy/pages/setting/setting_advice.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +25,7 @@ class _BlPageSettingState extends State<BlPageSetting> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF6F6F6),
+        // backgroundColor: const Color(0xFFFFFFFF),
         title: Text("设置", style: TextStyle(fontSize: 16.sp, color: const Color(0xFF191919))),
       ),
       body: Center(
@@ -88,7 +89,37 @@ class _BlPageSettingState extends State<BlPageSetting> {
               ),
               margin: EdgeInsets.all(6.h),
               child: Column(
-
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BlSettingRow(
+                    onPressed: () {},
+                    logoPath: "asset/logo_share.png",
+                    text: "分享比恋AI给好友",
+                  ),
+                  BlSettingRow(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const BlPageSettingAdvice()));
+                    },
+                    logoPath: "asset/logo_mail.png",
+                    text: "反馈与投诉，帮助我们改进"
+                  ),
+                  BlSettingRow(
+                    onPressed: () {},
+                    logoPath: "asset/logo_privacy.png",
+                    text: "隐私说明",
+                  ),
+                  BlSettingRow(
+                    onPressed: () {},
+                    logoPath: "asset/logo_about.png",
+                    text: "关于我们",
+                  ),
+                  BlSettingRow(
+                    onPressed: () {},
+                    logoPath: "asset/logo_logout.png",
+                    text: "注销账号",
+                  )
+                ],
               ),
             ),
             SizedBox(height: 6.h),
@@ -116,6 +147,37 @@ class _BlPageSettingState extends State<BlPageSetting> {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class BlSettingRow extends StatelessWidget {
+  final VoidCallback onPressed;
+  final String logoPath;
+  final String text;
+  const BlSettingRow({
+    super.key,
+    required this.onPressed,
+    required this.logoPath,
+    required this.text
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: onPressed,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: 63.w,
+            padding: EdgeInsets.symmetric(horizontal: 18.r),
+            child: Image.asset(logoPath, width: 27.w, height: 27.h),
+          ),
+          Text(text, style: TextStyle(fontSize: 16.sp, color: const Color(0xFF191919)))
+        ],
       ),
     );
   }
