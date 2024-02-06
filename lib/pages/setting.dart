@@ -1,5 +1,6 @@
 import 'package:bilian_xy/components/global.dart';
 import 'package:bilian_xy/pages/setting/setting_advice.dart';
+import 'package:bilian_xy/pages/setting/setting_logout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -115,7 +116,9 @@ class _BlPageSettingState extends State<BlPageSetting> {
                     text: "关于我们",
                   ),
                   BlSettingRow(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const BlPageSettingLogout()));
+                    },
                     logoPath: "asset/logo_logout.png",
                     text: "注销账号",
                   )

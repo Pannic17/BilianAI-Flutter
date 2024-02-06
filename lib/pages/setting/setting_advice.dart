@@ -1,3 +1,6 @@
+import 'package:bilian_xy/components/global.dart';
+import 'package:bilian_xy/pages/login.dart';
+import 'package:bilian_xy/pages/setting/setting_logout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,32 +42,15 @@ class _BlPageSettingAdviceState extends State<BlPageSettingAdvice> {
       body: Center(
         child: Column(
           children: [
+            BlTextField(textController: textController, focusNode: focusNode, hintText: "你可以描述你遇到的问题"),
             Container(
-              width: 347.w,
-              height: 145.h,
-              decoration: BoxDecoration(
-                color: const Color(0xFFFAFAFA),
-                borderRadius: BorderRadius.circular(8.r)
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 8.r),
-              child: TextField(
-                controller: textController,
-                focusNode: focusNode,
-                maxLength: 200,
-                maxLines: 4,
-                decoration: InputDecoration(
-                  hintText: "你可以描述你遇到的问题",
-                  hintStyle: TextStyle(
-                    fontSize: 14.sp,
-                    color: const Color(0xFF979797)
-                  ),
-                  border: InputBorder.none
-                ),
-              ),
-            ),
+              margin: EdgeInsets.symmetric(vertical: 24.h),
+              child: BlMajorButton(text: "提交", onPressed: () {}, width: 347)
+            )
           ],
         ),
       ),
     );
   }
 }
+

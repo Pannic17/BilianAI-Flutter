@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,17 +28,20 @@ class BlMajorButton extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;
   final Color backgroundColor;
+  final double width;
   const BlMajorButton({
     super.key,
     required this.text,
     required this.onPressed,
-    this.backgroundColor = const Color(0xFF6886FF)
+    this.backgroundColor = const Color(0xFF6886FF),
+    this.width = 246
   });
 
   @override
   Widget build(BuildContext context) {
+    double boxWidth = width.w;
     return SizedBox(
-      width: 246.w,
+      width: boxWidth,
       height: 43.h,
       child: TextButton(
         onPressed: onPressed,
